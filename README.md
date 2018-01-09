@@ -23,15 +23,15 @@ generated using code from ZINBA algorithm. In order to build window data from
 aligned sequencing reads a user should first download necessary files:
 
 1. Genome build in .2bit format. The files can be downloaded from links:
-        - hg19: http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit
-        - hg18: http://hgdownload.cse.ucsc.edu/goldenPath/hg18/bigZips/hg18.2bit
+	- hg19: http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit
+	- hg18: http://hgdownload.cse.ucsc.edu/goldenPath/hg18/bigZips/hg18.2bit
 2. Mappability files which correspond to sequencing read length. These files are
    used by ZINBA tool in order to generate the final mappability score (check
    https://code.google.com/archive/p/zinba/wikis/UsingZINBA.wiki for details):
-        - hg19, map 36bp: http://www.bios.unc.edu/~nur2/map36_hg19.tgz
-        - hg19, map 50bp: http://www.bios.unc.edu/~nur2/map50_hg19.tgz
-        - hg18, map 36bp: http://www.bios.unc.edu/~nur2/map36.tgz
-        - hg18, map 50bp: http://www.bios.unc.edu/~nur2/map50.tgz
+	- hg19, map 36bp: http://www.bios.unc.edu/~nur2/map36_hg19.tgz
+	- hg19, map 50bp: http://www.bios.unc.edu/~nur2/map50_hg19.tgz
+	- hg18, map 36bp: http://www.bios.unc.edu/~nur2/map36.tgz
+	- hg18, map 50bp: http://www.bios.unc.edu/~nur2/map50.tgz
 
 # Required R packages
 The following R packages must be installed prior to running the program:
@@ -55,7 +55,7 @@ either generates the mappability files from the raw alignability files or uses t
 already existing ones for calculating mappability score (ZINBA in turn uses peakseq
 code for generating alignability files).
 ### Input format
-Input files should be provided in either bed/tagAlign/bowtie format.
+Input files should be provided in either `bed`, `tagAlign` or `bowtie` format.
 ### Usage
 ```R
 buildwins(pathToZinbaLibLoc = NULL, seq = NULL, inputseq = NULL,
@@ -66,6 +66,7 @@ buildwins(pathToZinbaLibLoc = NULL, seq = NULL, inputseq = NULL,
 ```
 
 ### Arguments
+---
 pathToZinbaLibLoc:  path to ZINBA library. Default NULL.
 seq:                path to mapped sample reads in bed/tagAlign/bowtie file format
 inputseq:           path to mapped input reads in bed/tagAlign/bowtie file format. If
@@ -90,6 +91,7 @@ would like 4 equally
                     spaced offsets, then specifying offset=125 would achieve this
 cnvWinSize:         Size of windows used to calculate CNV activity in sample, default is 100000
 cnvOffset:          Offset for CNV windows, typically 2500bp issuffcient, default is no offsets
+---
 
 ### Output
 Function generates files that contain quantified read count, gc content, mappability
@@ -169,6 +171,7 @@ ziifd(pathfilelist1, pathfilelist2, formulaZ1 = NULL, formulaB1 = NULL,
 ```
 
 ### Arguments
+---
 pathfilelist1/2:  path to a folder containg a list of files for each chr for the
                   first/second track of data
 formulaZ1/2:      formula for modelling zero-infaleded component, track 1/2
@@ -182,6 +185,7 @@ consensus:        boolean - specifies whether the consensus track output should 
 threshold:        threshold of posterior probability for selecting peaks must be between
                   0 and 1 (default 0.95)
 numCores:         a desirable number of cores to be used for the run (default is 4)
+---
 
 ### Output
 Function generates BED files containing detected peaks with the calculated
@@ -208,7 +212,7 @@ ziifd(pathfilelist1 = 'path/to/second/input/folder/input1',
       consensus = TRUE,
       numCores = 4)
 
-Example of analysis of FAIRE-seq data and ChiP-seq tracks of the data:
+# Example of analysis of FAIRE-seq data and ChiP-seq tracks of the data:
 ziifd(pathfilelist1 = 'path/to/second/input/folder/input1',
       pathfilelist2 = 'path/to/second/input/folder/input2',
       formulaZ1 = 'exp_count ~ align_perc + exp_cnvwin_log + gcPerc + 1',
