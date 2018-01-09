@@ -186,6 +186,16 @@ threshold:        threshold of posterior probability for selecting peaks must be
                   0 and 1 (default 0.95)
 numCores:         a desirable number of cores to be used for the run (default is 4)
 ---
+pathfilelist1/2: "path to a folder containg a list of files for each chr for the first/second track of data"
+formulaZ1/2: "formula for modelling zero-infaleded component, track 1/2"
+formulaB1/2: "formula for modelling background component, track 1/2"
+formulaE1/2: "formula for modelling enrichment component, track 1/2"
+outputPath: "path to output folder"
+filename1/2: "prefix used to denote the output files for the firts/second track that are created by ziifd"
+consensus: "boolean - specifies whether the consensus track output should be created or not (default FALSE)"
+threshold: "threshold of posterior probability for selecting peaks must be between 0 and 1 (default 0.95)"
+numCores: "a desirable number of cores to be used for the run (default is 4)"
+
 
 ### Output
 Function generates BED files containing detected peaks with the calculated
