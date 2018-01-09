@@ -66,32 +66,22 @@ buildwins(pathToZinbaLibLoc = NULL, seq = NULL, inputseq = NULL,
 ```
 
 ### Arguments
----
-pathToZinbaLibLoc:  path to ZINBA library. Default NULL.
-seq:                path to mapped sample reads in bed/tagAlign/bowtie file format
-inputseq:           path to mapped input reads in bed/tagAlign/bowtie file format. If
-                    left blank, defaults to 'none'.
-generateAlign:      boolean value specifying whether the alignability files should be
-                    generated or not
-inputDirMap:        input directory containing files with unzipped peakseq mappability
-                    file (if generateAlign = TRUE)
-outdirAlign:        output directory for writing created output alignability files (if
-                    generateAlign = TRUE)
-inputDirAlign:      input directory with ready alignability files (if generateAlign = FALSE)
-outdirWins:         output directory for saving window data
-numProc:            number of processing units. Defaults is 4.
-twobitfile:         path to build of the genome the reads were mapped to, in .2bit format
-extension:          average length of fragments in fragment library used
-athresh:            Uniqueness threshold, number of occurrences of a given k-mer imposed
-                    during alignment (1 is absolute uniqueness).
-winSize:            Window size for build window data, default=250bp
-offset:             Bp offset, default is no offsets (offset=0). If one's winSize is 500 and
-                    would like 4 equally
-would like 4 equally
-                    spaced offsets, then specifying offset=125 would achieve this
-cnvWinSize:         Size of windows used to calculate CNV activity in sample, default is 100000
-cnvOffset:          Offset for CNV windows, typically 2500bp issuffcient, default is no offsets
----
+**pathToZinbaLibLoc**:  Path to ZINBA library. Default NULL.
+**seq**:                Path to mapped sample reads in bed/tagAlign/bowtie file format.
+**inputseq**:           Path to mapped input reads in bed/tagAlign/bowtie file format. If left blank, defaults to 'none'.
+**generateAlign**:      Boolean value specifying whether the alignability files should be generated or not.
+**inputDirMap**:        Input directory containing files with unzipped peakseq mappability file (if generateAlign = TRUE).
+**outdirAlign**:        Output directory for writing created output alignability files (if generateAlign = TRUE).
+**inputDirAlign**:      Input directory with ready alignability files (if generateAlign = FALSE).
+**outdirWins**:         Output directory for saving window data.
+**numProc**:            Number of processing units. Defaults is 4.
+**twobitfile**:         Path to build of the genome the reads were mapped to, in .2bit format.
+**extension**:          Average length of fragments in fragment library used.
+**athresh**:            Uniqueness threshold, number of occurrences of a given k-mer imposed during alignment (1 is absolute uniqueness).
+**winSize**:            Window size for build window data, default=250bp.
+**offset**:             Bp offset, default is no offsets (offset=0). If one's winSize is 500 and would like 4 equally would like 4 equally spaced offsets, then specifying offset=125 would achieve this.
+**cnvWinSize**:         Size of windows used to calculate CNV activity in sample, default is 100000.
+**cnvOffset**:          Offset for CNV windows, typically 2500bp issuffcient, default is no offsets.
 
 ### Output
 Function generates files that contain quantified read count, gc content, mappability
@@ -171,24 +161,23 @@ ziifd(pathfilelist1, pathfilelist2, formulaZ1 = NULL, formulaB1 = NULL,
 ```
 
 ### Arguments
-> pathfilelist1/2: 
-path to a folder containg a list of files for each chr for the first/second track of data
-> formulaZ1/2:
-formula for modelling zero-infaleded component, track 1/2
-> formulaB1/2:
-formula for modelling background component, track 1/2
-> formulaE1/2:
-formula for modelling enrichment component, track 1/2
-> outputPath:
-path to output folder
-> filename1/2:
-prefix used to denote the output files for the firts/second track that are created by ziifd
-> consensus:
-boolean - specifies whether the consensus track output should be created or not (default FALSE)
-> threshold:
-threshold of posterior probability for selecting peaks must be between 0 and 1 (default 0.95)
-> numCores:
-a desirable number of cores to be used for the run (default is 4)
+**pathfilelist1/2:** Path to a folder containg a list of files for each chr for the first/second track of data.
+
+**formulaZ1/2:** Formula for modelling zero-infaleded component, track 1/2.
+
+**formulaB1/2:** Formula for modelling background component, track 1/2.
+
+**formulaE1/2:** formula for modelling enrichment component, track 1/2.
+
+**outputPath:** Path to output folder.
+
+**filename1/2:** Prefix used to denote the output files for the firts/second track that are created by ziifd.
+
+**consensus:** Boolean - specifies whether the consensus track output should be created or not (default FALSE).
+
+**threshold:** Threshold of posterior probability for selecting peaks must be between 0 and 1 (default 0.95).
+
+**numCores:** A desirable number of cores to be used for the run (default is 4).
 
 ### Output
 Function generates BED files containing detected peaks with the calculated
